@@ -93,8 +93,8 @@ if (!err) {
 
 
 //delete
-router.delete('/:table',(req,res)=>{
-const where = req.body.where;
+router.delete('/:table/:where',(req,res)=>{
+const where = req.params.where;
 conn.query("DELETE FROM "+req.params.table+" WHERE "+where,(err,rows)=>{
     if (!err) {
         res.status(200).send("deleted "+rows.affectedRows+" rows sucessfully ");
