@@ -26,9 +26,9 @@ router.get('/query/:sql',(req,res)=>{
 })
 
 //select table
-router.get('/:table',(req,res)=>{
+router.get('/:table/:where',(req,res)=>{
     //check if where
-    const where = (req.query.where!=null)?" where "+req.query.where:"";
+    const where = (req.params.where!=null)?" where "+req.params.where:"";
     conn.query('SELECT * FROM '+req.params.table+where,(err,rows,fields)=>{
         if (!err) {
 
